@@ -6,18 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IgnitorAPI.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
+        /// <summary>
+        /// Gets a collection of values.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
+        /// <summary>
+        /// Gets a specific value.
+        /// </summary>
+        /// <param name="id">ID of value to get.</param>
+        /// <returns>String value.</returns>
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {

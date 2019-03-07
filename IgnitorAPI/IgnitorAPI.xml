@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IgnitorAPI</name>
+    </assembly>
+    <members>
+        <member name="M:IgnitorAPI.Controllers.ValuesController.Get">
+            <summary>
+            Gets a collection of values.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IgnitorAPI.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+            Gets a specific value.
+            </summary>
+            <param name="id">ID of value to get.</param>
+            <returns>String value.</returns>
+        </member>
+    </members>
+</doc>
