@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace IgnitorAPI.Controllers
 {
@@ -11,6 +12,13 @@ namespace IgnitorAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly ILogger _logger;
+
+        public ValuesController(ILoggerFactory loggerFactory)
+        {
+            _logger = loggerFactory.CreateLogger<ValuesController>();
+        }
+
         /// <summary>
         /// Gets a collection of values.
         /// </summary>
@@ -18,6 +26,13 @@ namespace IgnitorAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            _logger.LogDebug("debug");
+            _logger.LogError("error");
+            _logger.LogTrace("trace");
+            _logger.LogInformation("info");
+            _logger.LogWarning("warn");
+            _logger.LogCritical("critical");
+
             return new string[] { "value1", "value2" };
         }
 
