@@ -35,10 +35,6 @@ namespace IgnitorAPI.Controllers
             _logger.LogWarning("warn");
             _logger.LogCritical("critical");
 
-            
-            var target = LogManager.Configuration.FindTargetByName<MemoryTarget>("memory-log");
-            var logs = target.Logs;
-
             return new string[] { "value1", "value2" };
         }
 

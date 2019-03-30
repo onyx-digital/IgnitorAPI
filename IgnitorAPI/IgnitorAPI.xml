@@ -4,6 +4,19 @@
         <name>IgnitorAPI</name>
     </assembly>
     <members>
+        <member name="M:IgnitorAPI.Controllers.LogsController.Get">
+            <summary>
+            Get all API logs.
+            </summary>
+            <returns>Collection of API logs.</returns>
+        </member>
+        <member name="M:IgnitorAPI.Controllers.LogsController.Get(System.DateTime)">
+            <summary>
+            Get API logs from a starting date and time.
+            </summary>
+            <param name="startDate">Start date and time of the logs collection.</param>
+            <returns>Filtered collection of API logs.</returns>
+        </member>
         <member name="M:IgnitorAPI.Controllers.ValuesController.Get">
             <summary>
             Gets a collection of values.
