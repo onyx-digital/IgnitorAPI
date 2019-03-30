@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NLog;
+using NLog.Targets;
 
 namespace IgnitorAPI.Controllers
 {
@@ -12,7 +14,7 @@ namespace IgnitorAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly ILogger _logger;
+        private readonly Microsoft.Extensions.Logging.ILogger _logger;
 
         public ValuesController(ILoggerFactory loggerFactory)
         {
@@ -32,6 +34,10 @@ namespace IgnitorAPI.Controllers
             _logger.LogInformation("info");
             _logger.LogWarning("warn");
             _logger.LogCritical("critical");
+
+            
+            var target = LogManager.Configuration.FindTargetByName<MemoryTarget>("memory-log");
+            var logs = target.Logs;
 
             return new string[] { "value1", "value2" };
         }
