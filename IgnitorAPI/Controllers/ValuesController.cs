@@ -28,12 +28,12 @@ namespace IgnitorAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            _logger.LogDebug("debug");
-            _logger.LogError("error");
-            _logger.LogTrace("trace");
-            _logger.LogInformation("info");
-            _logger.LogWarning("warn");
-            _logger.LogCritical("critical");
+            _logger.LogTrace("Trace");
+            _logger.LogDebug("Debug");
+            _logger.LogInformation("Info");
+            _logger.LogWarning("Warning");
+            _logger.LogError("Error");
+            _logger.LogCritical("Fatal");
 
             return new string[] { "value1", "value2" };
         }

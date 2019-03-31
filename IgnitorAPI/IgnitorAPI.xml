@@ -12,9 +12,24 @@
         </member>
         <member name="M:IgnitorAPI.Controllers.LogsController.Get(System.DateTime)">
             <summary>
-            Get API logs from a starting date and time.
+            Get API logs filtered by minimum timestamp.
             </summary>
-            <param name="startDate">Start date and time of the logs collection.</param>
+            <param name="startDate">Minimum timestamp filter.</param>
+            <returns>Filtered collection of API logs.</returns>
+        </member>
+        <member name="M:IgnitorAPI.Controllers.LogsController.Get(System.String)">
+            <summary>
+            Get API logs filtered by log level. 
+            </summary>
+            <param name="level">Log level filter, allowed values: Debug, Info, Warn, Error, Fatal.</param>
+            <returns>Filtered collection of API logs.</returns>
+        </member>
+        <member name="M:IgnitorAPI.Controllers.LogsController.Get(System.DateTime,System.String)">
+            <summary>
+            Get API logs filtered by minimum timestamp and level. 
+            </summary>
+            <param name="startDate">Minimum timestamp filter.</param>
+            <param name="level">Log level filter, allowed values: Debug, Info, Warn, Error, Fatal.</param>
             <returns>Filtered collection of API logs.</returns>
         </member>
         <member name="M:IgnitorAPI.Controllers.ValuesController.Get">

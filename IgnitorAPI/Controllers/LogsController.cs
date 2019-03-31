@@ -3,6 +3,7 @@ using NLog;
 using NLog.Targets;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace IgnitorAPI.Controllers
 {
@@ -25,16 +26,16 @@ namespace IgnitorAPI.Controllers
         }
 
         /// <summary>
-        /// Get API logs from a starting date and time.
+        /// Get API logs filtered by minimum timestamp.
         /// </summary>
-        /// <param name="startDate">Start date and time of the logs collection.</param>
+        /// <param name="startDate">Minimum timestamp filter.</param>
         /// <returns>Filtered collection of API logs.</returns>
-        [HttpGet("{startDate}")]
+        [HttpGet("date/{startDate}")]
         public IEnumerable<string> Get(DateTime startDate)
         {
-            var target = LogManager.Configuration.FindTargetByName<MemoryTarget>("memory-log");
-
             List<string> logList = new List<string>();
+
+            var target = LogManager.Configuration.FindTargetByName<MemoryTarget>("memory-log");
             foreach(string log in target.Logs)
             {
                 DateTime logDate = Convert.ToDateTime(log.Substring(0, 24));
@@ -47,5 +48,57 @@ namespace IgnitorAPI.Controllers
 
             return logList;
         }
+
+        /// <summary>
+        /// Get API logs filtered by log level. 
+        /// </summary>
+        /// <param name="level">Log level filter, allowed values: Debug, Info, Warn, Error, Fatal.</param>
+        /// <returns>Filtered collection of API logs.</returns>
+        [HttpGet("level/{level}")]
+        public IEnumerable<string> Get(string level)
+        {
+            List<string> logList = new List<string>();
+
+            string pattern = string.Format(@"\|{0}\|", level.ToUpper());
+
+            var target = LogManager.Configuration.FindTargetByName<MemoryTarget>("memory-log");
+            foreach (string log in target.Logs)
+            {
+                if (Regex.IsMatch(log, pattern))
+                {
+                    logList.Add(log);
+                }
+            }
+
+            return logList;
+        }
+
+        /// <summary>
+        /// Get API logs filtered by minimum timestamp and log level. 
+        /// </summary>
+        /// <param name="startDate">Minimum timestamp filter.</param>
+        /// <param name="level">Log level filter, allowed values: Debug, Info, Warn, Error, Fatal.</param>
+        /// <returns>Filtered collection of API logs.</returns>
+        [HttpGet("datelevel/{startDate}/{level}")]
+        public IEnumerable<string> Get(DateTime startDate, string level)
+        {
+            List<string> logList = new List<string>();
+
+            string pattern = string.Format(@"\|{0}\|", level.ToUpper());
+
+            var target = LogManager.Configuration.FindTargetByName<MemoryTarget>("memory-log");
+            foreach (string log in target.Logs)
+            {
+                DateTime logDate = Convert.ToDateTime(log.Substring(0, 24));
+
+                if ((logDate >= startDate) && (Regex.IsMatch(log, pattern)))
+                {
+                    logList.Add(log);
+                }
+            }
+
+            return logList;
+        }
+
     }
 }
