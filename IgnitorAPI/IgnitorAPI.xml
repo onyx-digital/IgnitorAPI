@@ -26,11 +26,17 @@
         </member>
         <member name="M:IgnitorAPI.Controllers.LogsController.Get(System.DateTime,System.String)">
             <summary>
-            Get API logs filtered by minimum timestamp and level. 
+            Get API logs filtered by minimum timestamp and log level. 
             </summary>
             <param name="startDate">Minimum timestamp filter.</param>
             <param name="level">Log level filter, allowed values: Debug, Info, Warn, Error, Fatal.</param>
             <returns>Filtered collection of API logs.</returns>
+        </member>
+        <member name="M:IgnitorAPI.Controllers.OptionsController.GetUserOptions">
+            <summary>
+            Get all user options.
+            </summary>
+            <returns>All user options.</returns>
         </member>
         <member name="M:IgnitorAPI.Controllers.ValuesController.Get">
             <summary>

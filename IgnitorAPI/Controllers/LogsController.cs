@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 namespace IgnitorAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/logs")]
     [ApiController]
     public class LogsController : Controller
     {
