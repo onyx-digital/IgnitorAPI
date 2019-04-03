@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 ﻿using IgnitorAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
