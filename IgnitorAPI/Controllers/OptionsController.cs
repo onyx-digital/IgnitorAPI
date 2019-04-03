@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using IgnitorAPI.Models;
+﻿using IgnitorAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
@@ -29,7 +26,7 @@ namespace IgnitorAPI.Controllers
         [HttpGet("user")]
         public UserOptions GetUserOptions()
         {
-            return _options; ;
+            return _options;
         }
     }
 }
