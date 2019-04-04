@@ -17,12 +17,12 @@ namespace IgnitorAPI.Controllers
         /// </summary>
         /// <returns>Collection of API logs.</returns>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<IEnumerable<string>> Get()
         {
             var target = LogManager.Configuration.FindTargetByName<MemoryTarget>("memory-log");
             var logs = target.Logs;
 
-            return logs;
+            return Ok(logs);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace IgnitorAPI.Controllers
         /// <param name="startDate">Minimum timestamp filter.</param>
         /// <returns>Filtered collection of API logs.</returns>
         [HttpGet("date/{startDate}")]
-        public IEnumerable<string> Get(DateTime startDate)
+        public ActionResult<IEnumerable<string>> Get(DateTime startDate)
         {
             List<string> logList = new List<string>();
 
@@ -46,7 +46,7 @@ namespace IgnitorAPI.Controllers
                 }
             }
 
-            return logList;
+            return Ok(logList);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace IgnitorAPI.Controllers
         /// <param name="level">Log level filter, allowed values: Debug, Info, Warn, Error, Fatal.</param>
         /// <returns>Filtered collection of API logs.</returns>
         [HttpGet("level/{level}")]
-        public IEnumerable<string> Get(string level)
+        public ActionResult<IEnumerable<string>> Get(string level)
         {
             List<string> logList = new List<string>();
 
@@ -70,7 +70,7 @@ namespace IgnitorAPI.Controllers
                 }
             }
 
-            return logList;
+            return Ok(logList);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace IgnitorAPI.Controllers
         /// <param name="level">Log level filter, allowed values: Debug, Info, Warn, Error, Fatal.</param>
         /// <returns>Filtered collection of API logs.</returns>
         [HttpGet("datelevel/{startDate}/{level}")]
-        public IEnumerable<string> Get(DateTime startDate, string level)
+        public ActionResult<IEnumerable<string>> Get(DateTime startDate, string level)
         {
             List<string> logList = new List<string>();
 
@@ -97,7 +97,7 @@ namespace IgnitorAPI.Controllers
                 }
             }
 
-            return logList;
+            return Ok(logList);
         }
 
     }

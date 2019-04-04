@@ -38,18 +38,13 @@
             </summary>
             <returns>All user options.</returns>
         </member>
-        <member name="M:IgnitorAPI.Controllers.ValuesController.Get">
+        <member name="M:IgnitorAPI.Controllers.OptionsController.GetUserOption(System.String)">
             <summary>
-            Gets a collection of values.
+            Get the value of a specified user option.
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:IgnitorAPI.Controllers.ValuesController.Get(System.Int32)">
-            <summary>
-            Gets a specific value.
-            </summary>
-            <param name="id">ID of value to get.</param>
-            <returns>String value.</returns>
+            <param name="optionName">Specific user option required.</param>
+            <returns>Value of the specified user option.</returns>
+            <response code="404">Option not found.</response>
         </member>
     </members>
 </doc>
