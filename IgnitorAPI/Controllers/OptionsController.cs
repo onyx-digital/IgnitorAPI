@@ -6,40 +6,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace IgnitorAPI.Controllers
 {
+    /// <summary>
+    /// This controller provides a public API for Option Operations.
+    /// </summary>
     [Produces("application/json")]
     [Route("api/options")]
     [ApiController]
     public class OptionsController : Controller
     {
-        private readonly UserOptions _options;
+        private readonly AppOptions _options;
 
-        public OptionsController(IOptionsMonitor<UserOptions> optionsAccessor)
+        public OptionsController(IOptionsMonitor<AppOptions> optionsAccessor)
         {
             _options = optionsAccessor.CurrentValue;
         }
 
         /// <summary>
-        /// Get all user options.
+        /// Get all application options.
         /// </summary>
-        /// <returns>All user options.</returns>
-        [HttpGet("userOptions")]
-        public ActionResult<UserOptions> GetUserOptions()
+        /// <returns>All application options.</returns>
+        [HttpGet("appOptions")]
+        public ActionResult<AppOptions> GetAppOptions()
         {
             return Ok(_options);
         }
 
         /// <summary>
-        /// Get the value of a specified user option.
+        /// Get the value of a specified application option.
         /// </summary>
-        /// <param name="optionName">Specific user option required.</param>
-        /// <returns>Value of the specified user option.</returns>
-        /// <response code="404">Option not found.</response>
-        [HttpGet("userOption/{optionName}")]
-        public ActionResult<string> GetUserOption(string optionName)
+        /// <param name="optionName">Specific application option required.</param>
+        /// <returns>Value of the requested option.</returns>
+        /// <response code="404">Requested option not found.</response>
+        [HttpGet("appOption/{optionName}")]
+        public ActionResult<string> GetAppOption(string optionName)
         {
             string retVal = string.Empty;
 

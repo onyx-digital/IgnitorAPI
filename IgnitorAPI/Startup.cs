@@ -32,7 +32,7 @@ namespace IgnitorAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // Register the Configuration instance which MyOptions binds against.
-            services.Configure<UserOptions>(Configuration);
+            services.Configure<AppOptions>(Configuration.GetSection("AppOptions"));
 
             // Register the Swagger generator.
             services.AddSwaggerGen(c =>

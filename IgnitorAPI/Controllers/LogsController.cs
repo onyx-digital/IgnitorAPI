@@ -7,6 +7,9 @@ using System.Text.RegularExpressions;
 
 namespace IgnitorAPI.Controllers
 {
+    /// <summary>
+    /// This controller provides a public API for Log Operations.
+    /// </summary>
     [Produces("application/json")]
     [Route("api/logs")]
     [ApiController]
